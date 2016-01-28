@@ -38,14 +38,25 @@ HangMan.prototype.checkLetter = function(guessLetter) {
     if (word[i] === guessLetter) {
       blankWord[i] = word[i];
       correctLetter = true ;
+      var updatedWord = blankWord;
+      console.log("updated word: ", updatedWord);
     }
   };
   if (correctLetter === false){
     this.score -= 1;
     console.log(this.score);
   }
-  return blankWord;
+  return updatedWord;
 };
+
+
+
+
+
+
+
+
+
 
 HangMan.prototype.lettersUsed = function(guessLetter) {
   var letter = this.letter;
