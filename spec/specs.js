@@ -1,21 +1,27 @@
-describe("Player", function() {
-  it("will output player name and mark choice", function() {
-    var testPlayer = new Player("X", "Jim");
-    expect(testPlayer.mark).to.equal("X");
-    expect(testPlayer.playerName).to.equal("Jim");
+describe("HangMan", function() {
+  it("will create a new HangMan", function() {
+    var testHangMan = new HangMan(["cat"]);
+    expect(testHangMan.array).to.eql(["cat"]);
   });
-});
 
-describe("Space", function() {
-  it("will put an 'x' or 'o' into the selected index position", function() {
-    var testSpace = new Space("X", "4");
-    expect(testSpace.mark).to.equal("X");
-    expect(testSpace.position).to.eql([4]);
+  it("will select a word from the array", function() {
+    var testHangMan = new HangMan(["cat"]);
+    expect(testHangMan.randomWord(["cat"])).to.equal("cat");
   });
-});
 
-describe("Board", function() {
-  it("will expect Board to contain three arrays", function() {
-    expect(positionIndex[0]).to.eql([0,1,2]);
+  it("will replace letters in the word with '_'", function() {
+    var testHangMan = new HangMan(["cat"]);
+    expect(testHangMan.addBlanks(["cat"])).to.equal("_ _ _ ");
   });
+
+  it("will split letters in chosenWord", function() {
+    var testHangMan = new HangMan(["cat"]);
+    expect(testHangMan.splitWord(["cat"])).to.eql([ 'c', 'a', 't' ]);
+  });
+
+  it("will check if guessed letter is in word", function() {
+    var testHangMan = new HangMan("cat");
+    expect(testHangMan.guessLetter("b")).to.equal(false);
+  });
+
 });
