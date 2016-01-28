@@ -21,6 +21,12 @@ describe("HangMan", function() {
 
   it("will take the guessed letter and add it to the letterGuessed array", function() {
     var testGuessedLetter = new HangMan();
-    expect(testGuessedLetter.lettersUsed("e")).to.eql(["e"]);
+    expect(testGuessedLetter.lettersUsed("d")).to.eql(["d"]);
   });
+
+  it("will update score when an incorrect letter is guessed", function() {
+    var testScore = new HangMan();
+    testScore.checkLetter("d");
+    expect(testScore.score).to.equal(4);
+  })
 });
