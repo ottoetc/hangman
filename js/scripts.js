@@ -4,43 +4,43 @@
 // guessed letters
 // score;
 
-function HangMan(){
-  this.array = ["tree"];
-  this.word = this.randomWord();
-  this.guessedLetters = [];
-  this.score = 5;
-  this.userGuess = this.checkLetter;
+function HangMan(wordArray){
+  this.wordArray = ["tree"];
 };
 
 HangMan.prototype.randomWord = function() {
-  var word = this.array[Math.floor(Math.random() * this.array.length)];
+  var word = this.wordArray[Math.floor(Math.random() * this.wordArray.length)];
   return word;
 };
 
-HangMan.prototype.addBlanks = function(word) {
-  var chosenWord = this.word.replace(/\w/g, "_ ");
-  return chosenWord;
-}
-
-HangMan.prototype.splitWord = function(word) {
-  var splitWord = this.word.split("");
-  return splitWord;
-}
-
-// check guessed letters against letters in word
-// if letter not in word, add letter to guessed letter, subtract 1 from score (when score === 0 you lose)
-// else letter is in word, replace "_" with guessed letter
-HangMan.prototype.checkLetter = function(guessLetter) {
-  var checkLetter = this.userGuess;
-  for (i = 0; i <= this.word.length; i ++) {
-    if (this.word.charAt(i) !== guessLetter) {
-      guessLetter.push(this.guessedLetters)
-      this.score -= 1
-    } else {
-      addBlanks.charAt(i).replace(guessLetter);
-      guessLetter.push(guessedLetters)
-      this.score = score;
-    };
-    return addBlanks
-  };
+HangMan.prototype.splitWord = function() {
+  var word = this.randomWord();
+  return word.split([]);
 };
+
+HangMan.prototype.addBlanks = function() {
+  var word = this.splitWord();
+  for (var i=0; i < word.length; i++) {
+    word[i] = "_ ";
+  } return word;
+};
+
+HangMan.prototype.checkLetter = function(guessLetter) {
+  var blankWord = this.addBlanks();
+  var word = this.splitWord();
+  for (var i = 0; i < word.length; i ++) {
+    if (word[i] === guessLetter) {
+      blankWord[i] = word[i];
+    }
+  };
+  return blankWord;
+};
+
+// $(document).ready(function() {
+//   HangMan();
+//   $("form").submit(function(event) {
+//     var userInput = $("input#guessInput").val();
+//     var userInput = userInput.toLowerCase();
+//     var newGame = new HangMan(userInput);
+//   })
+// })
