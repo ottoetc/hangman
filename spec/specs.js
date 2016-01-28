@@ -18,4 +18,9 @@ describe("HangMan", function() {
     var testWord = new HangMan();
     expect(testWord.checkLetter("e")).to.eql(["_ ", "_ ", "e", "e"]);
   });
+
+  it("will take the guessed letter and add it to the letterGuessed array", function() {
+    var testGuessedLetter = new HangMan();
+    expect(testGuessedLetter.lettersUsed("e")).to.eql(["e"]);
+  });
 });

@@ -6,6 +6,7 @@
 
 function HangMan(wordArray){
   this.wordArray = ["tree"];
+  this.lettersGuessed = [];
 };
 
 HangMan.prototype.randomWord = function() {
@@ -31,10 +32,16 @@ HangMan.prototype.checkLetter = function(guessLetter) {
   for (var i = 0; i < word.length; i ++) {
     if (word[i] === guessLetter) {
       blankWord[i] = word[i];
-    }
+    };
   };
   return blankWord;
 };
+
+HangMan.prototype.lettersUsed = function(guessLetter) {
+  var letter = [];
+  var letterList = letter.push(guessLetter);
+  return letter; 
+}
 
 // $(document).ready(function() {
 //   HangMan();
