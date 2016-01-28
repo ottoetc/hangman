@@ -8,6 +8,7 @@ function HangMan(wordArray){
   this.wordArray = ["tree"];
   this.letter = [];
   this.score = 5;
+  console.log(this.score);
 };
 
 HangMan.prototype.randomWord = function() {
@@ -31,15 +32,18 @@ HangMan.prototype.addBlanks = function() {
 HangMan.prototype.checkLetter = function(guessLetter) {
   var blankWord = this.addBlanks();
   var word = this.splitWord();
+  var correctLetter = false;
   //var score = this.score;
   for (var i = 0; i < word.length; i ++) {
     if (word[i] === guessLetter) {
       blankWord[i] = word[i];
-    } else {
-      this.score -= 1;
-      console.log(this.score);
+      correctLetter = true ;
     }
   };
+  if (correctLetter === false){
+    this.score -= 1;
+    console.log(this.score);
+  }
   return blankWord;
 };
 
